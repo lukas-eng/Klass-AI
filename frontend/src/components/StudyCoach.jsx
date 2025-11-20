@@ -15,7 +15,7 @@ export default function StudyCoach() {
     setLoading(true);
 
     try {
-      const res = await axios.post("http://localhost:8000/coach", {
+      const res = await axios.post("https://klass-ai.onrender.com/coach", {
         tema,
         nivel,
       });
@@ -83,3 +83,4 @@ export default function StudyCoach() {
     </div>
   );
 }
+
