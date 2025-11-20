@@ -3,7 +3,7 @@
 Interfaz web desarrollada en React para la plataforma educativa **Klass-IA**, un entorno donde estudiantes y docentes acceden a asistentes con IA para planificar estudios, generar exámenes, participar en foros y gestionar perfiles académicos.  
 El proyecto mantiene la identidad gráfica de Klass-IA / Keralty e integra componentes personalizables para desplegarse en entornos web modernos.
 
-![Logo Klass-IA](./src/img/klass-ai.jpeg)
+![Logo Klass-IA](../frontend/src/img/klass-ai.jpeg)
 
 ## Tabla de contenidos
 1. [Características principales](#características-principales)  
