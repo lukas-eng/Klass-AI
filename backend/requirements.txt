@@ -3,3 +3,4 @@ gunicorn
 uvicorn
 python-dotenv
 pydantic
+google-generativeai
