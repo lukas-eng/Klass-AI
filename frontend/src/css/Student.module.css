@@ -1,0 +1,219 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+:root{
+  --primary:#51A880;
+  --primary-900:#2f7a58;
+  --muted:#6b7280;
+  --bg:#f6fbf8;
+  --card: rgba(255,255,255,0.96);
+  --accent:#b8dacb;
+}
+
+.container{
+  font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  color: #0f172a;
+  background: linear-gradient(180deg, var(--bg) 0%, rgba(255,255,255,0.96) 100%);
+  padding: 18px;
+  box-sizing: border-box;
+}
+
+.grid{
+  display: grid;
+  grid-template-columns: 1fr minmax(240px, 360px);
+  gap: 20px;
+  align-items: start;
+}
+
+.card{
+  background: var(--card);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 8px 20px rgba(15,23,42,0.06);
+}
+
+/* Ensure cards don't overflow and scale on small screens */
+.card{ box-sizing: border-box; max-width: 100%; }
+
+.aboutImage{
+  width: min(96px, 22vw);
+  height: min(96px, 22vw);
+  object-fit: contain;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(15,23,42,0.06);
+}
+
+.aboutList{ list-style: disc; padding-left: 18px; }
+
+.aboutHero{
+  display: flex;
+  gap: 18px;
+  align-items: center;
+}
+
+.aboutImageLarge{
+  width: min(140px, 38vw);
+  height: min(140px, 38vw);
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 12px 28px rgba(15,23,42,0.08);
+}
+
+.featuresGrid{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.featureCard{
+  background: linear-gradient(180deg, rgba(255,255,255,0.96) 0%, rgba(248,255,251,0.96) 100%);
+  border-radius: 10px;
+  padding: 12px;
+  box-shadow: 0 6px 18px rgba(15,23,42,0.04);
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.featureIcon{
+  width: clamp(36px, 6vw, 44px);
+  height: clamp(36px, 6vw, 44px);
+  border-radius: 10px;
+  background: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+
+.testimonial{
+  background: linear-gradient(180deg, rgba(255,255,255,0.96) 0%, rgba(243,255,246,0.96) 100%);
+  border-radius: 10px;
+  padding: 12px;
+  border: 1px solid rgba(230,243,234,0.9);
+  margin-top: 8px;
+}
+
+.testimonialQuote{ font-style: italic; color: #23303a; }
+.testimonialAuthor{ margin-top: 8px; color: var(--muted); font-size: 0.95rem; }
+
+.ctaRow{ display:flex; gap:10px; align-items:center; flex-wrap:wrap }
+.secondaryButton{
+  background: transparent;
+  border: 1px solid #e6eef0;
+  color: var(--primary-900);
+  padding: 8px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight:600;
+}
+
+.muted{ color: var(--dark); }
+
+.button{
+  background: var(--primary);
+  color: white;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+@media (max-width: 780px){
+  .aboutHero{ flex-direction: column; align-items: flex-start; }
+  .aboutImageLarge{ width: 110px; height: 110px; }
+}
+
+.title{
+  margin: 0 0 12px 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--dark);
+}
+
+.formRow{
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+input[type="text"], input[type="email"], select, textarea{
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #e6eef0;
+  box-sizing: border-box;
+  font-size: 0.97rem;
+  font-family: inherit;
+  color: var(--dark);
+}
+
+.button{
+  background: var(--primary);
+  color: white;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.mutedBtn{
+  background: transparent;
+  border: 1px solid #e6eef0;
+  color: var(--dark);
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.responseBox{
+  background: linear-gradient(180deg, rgba(255,255,255,0.96) 0%, rgba(243,255,246,0.96) 100%);
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(230,243,234,0.9);
+  white-space: pre-wrap;
+}
+
+.sidebarCard{
+  background: linear-gradient(180deg, rgba(255,255,255,0.96) 0%, rgba(184,218,203,0.12) 100%);
+  border-radius: 12px;
+  padding: 14px;
+  text-align: center;
+  box-shadow: 0 8px 18px rgba(15,23,42,0.04);
+}
+
+.bigImage{
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.forumPost{
+  border-radius: 10px;
+  padding: 12px;
+  background: var(--card);
+  border: 1px solid #eef3ef;
+  margin-bottom: 12px;
+}
+
+.postMeta{
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+@media (max-width: 980px){
+  .grid{
+    grid-template-columns: 1fr;
+  }
+  .sidebarCard{
+    order: -1;
+  }
+  .featuresGrid{ grid-template-columns: 1fr; }
+}
+
+@media (max-width: 520px){
+  .title{ font-size: 1.05rem; }
+  .button{ padding: 9px 12px; }
+}

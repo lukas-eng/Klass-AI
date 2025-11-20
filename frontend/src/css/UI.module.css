@@ -1,0 +1,47 @@
+:root{
+  --ui-transition: 220ms cubic-bezier(.2,.9,.2,1);
+}
+
+/* Subtle lift effect for cards */
+.hoverLift{
+  transition: transform var(--ui-transition), box-shadow var(--ui-transition);
+}
+.hoverLift:hover{
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(15,23,42,0.12);
+}
+
+/* Smooth fade-in when mounted */
+.fadeIn{
+  animation: fadeIn 380ms ease both;
+}
+@keyframes fadeIn{
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Button smoothing */
+.btnSmooth{
+  transition: transform var(--ui-transition), background-color var(--ui-transition), box-shadow var(--ui-transition);
+}
+.btnSmooth:hover{
+  transform: translateY(-3px);
+}
+.btnSmooth:active{ transform: translateY(0); }
+
+/* Small icon wrapper */
+.iconCircle{
+  width: clamp(36px, 4vw, 48px);
+  height: clamp(36px, 4vw, 48px);
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(81,168,128,0.08);
+  color: var(--dark, #1F2937);
+}
+
+/* Utility subtle shadow used on small cards */
+.subtleShadow{ box-shadow: 0 8px 20px rgba(15,23,42,0.06); }
+
+.iconSvg{ width:18px; height:18px; color: inherit; }
