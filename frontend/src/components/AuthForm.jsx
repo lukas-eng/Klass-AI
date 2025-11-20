@@ -23,7 +23,7 @@ const AuthForm = ({ onLoginSuccess }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const endpoint = isRegister ? '/register' : '/login';
-    const url = `http://127.0.0.1:8000${endpoint}`;
+    const url = `https://klass-ai.onrender.com${endpoint}`;
 
     console.log("Datos enviados al backend:", formData);
 
@@ -142,5 +142,6 @@ const AuthForm = ({ onLoginSuccess }) => {
     </div>
   );
 };
+
 
 export default AuthForm;
