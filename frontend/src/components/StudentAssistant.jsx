@@ -14,7 +14,7 @@ const StudentAssistant = () => {
     setLoading(true);
     setResponse("");
     try {
-      const res = await axios.post("http://127.0.0.1:8000/student", {
+      const res = await axios.post("https://klass-ai.onrender.com/student", {
         question,
         userId: "anon",
       });
@@ -61,3 +61,4 @@ const StudentAssistant = () => {
 };
 
 export default StudentAssistant;
+
