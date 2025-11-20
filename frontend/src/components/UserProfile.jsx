@@ -37,7 +37,7 @@ const UserProfile = ({ userEmail, nombre, apellido, password, onProfileUpdate })
       password: formData.password
     };
     try {
-      const response = await fetch('http://127.0.0.1:8000/profile/update', {
+      const response = await fetch('https://klass-ai.onrender.com/profile/update', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(updateData)
@@ -105,3 +105,4 @@ const UserProfile = ({ userEmail, nombre, apellido, password, onProfileUpdate })
 };
 
 export default UserProfile;
+
