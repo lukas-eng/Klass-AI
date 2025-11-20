@@ -80,24 +80,20 @@ function App() {
   // Footer autohide on scroll: hide when scrolling down, show when scrolling up
   const [footerHidden, setFooterHidden] = useState(false);
   useEffect(() => {
-    let lastScroll = window.scrollY;
-    let ticking = false;
     const onScroll = () => {
-      const current = window.scrollY;
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          if (current > lastScroll + 10 && current > 120) {
-            setFooterHidden(true);
-          } else if (current < lastScroll - 10) {
-            setFooterHidden(false);
-          }
-          lastScroll = current;
-          ticking = false;
-        });
-        ticking = true;
+      const scrollY = window.scrollY;
+      const windowHeight = window.innerHeight;
+      const docHeight = document.documentElement.scrollHeight;
+      // Mostrar el footer solo si el usuario está cerca del final (últimos 80px)
+      if (scrollY + windowHeight >= docHeight - 80) {
+        setFooterHidden(false);
+      } else {
+        setFooterHidden(true);
       }
     };
     window.addEventListener('scroll', onScroll, { passive: true });
+    // Ejecutar al cargar por si ya está abajo
+    onScroll();
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
@@ -207,7 +203,7 @@ function App() {
               password={password}
               onProfileUpdate={handleProfileUpdate}
             />}
-            <img src={decorImg} alt="Decorativo" className={styles.owlDecor} />
+            <img src={decorImg} alt="Keralty" className={styles.owlDecor} />
           </main>
           ) : (
           <main className={styles.main}>

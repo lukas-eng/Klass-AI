@@ -1,10 +1,13 @@
 :root{
-    --primary: #51A880;
-    --primary-dark: #2f7a58;
-    --dark: #6b7280;
-    --accent: #b8dacb;
-    --muted: #6b7280;
-    --bg: #f6fbf8;
+    --primary: #00a0d6;
+    --primary-dark: #00629d;
+    --emerald: #2bb673;
+    --emerald-dark: #1c7d4f;
+    --dark: #0f233b;
+    --muted: #4f6071;
+    --accent: #9be5c8;
+    --bg: #f0fbff;
+    --bg-alt: #e6fff3;
     --footer-height: 56px;
 }
 
@@ -32,6 +35,12 @@ body {
     margin: 0;
     box-sizing: border-box;
     overflow-x: hidden;
+    min-height: 100vh;
+    background: radial-gradient(circle at 10% 20%, rgba(0,160,214,0.18), transparent 55%),
+                radial-gradient(circle at 80% 0%, rgba(43,182,115,0.15), transparent 50%),
+                linear-gradient(180deg, var(--bg), #ffffff);
+    color: var(--dark);
+    font-family: 'Rubik', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
 }
 
 .appContainer {
@@ -41,6 +50,34 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between; /* Asegura que el contenido y el footer estén separados */
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 80px;
+}
+
+.appContainer::before,
+.appContainer::after{
+    content: "";
+    position: fixed;
+    width: clamp(220px, 32vw, 360px);
+    height: clamp(220px, 32vw, 360px);
+    border-radius: 50%;
+    filter: blur(50px);
+    opacity: 0.28;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.appContainer::before{
+    top: -120px;
+    left: -80px;
+    background: radial-gradient(circle, rgba(0,160,214,0.65), transparent 65%);
+}
+
+.appContainer::after{
+    bottom: 50px;
+    right: -100px;
+    background: radial-gradient(circle, rgba(43,182,115,0.55), transparent 60%);
 }
 
 .logo {
@@ -57,8 +94,13 @@ body {
     justify-content: space-between;
     gap: 20px;
     padding: 14px 20px;
-    background: linear-gradient(90deg, var(--primary) 0%, var(--dark) 100%);
-    box-shadow: 0 6px 18px rgba(15,23,42,0.06);
+    background: linear-gradient(120deg, rgba(0,160,214,0.95) 0%, rgba(0,129,184,0.92) 35%, rgba(43,182,115,0.9) 100%);
+    box-shadow: 0 20px 40px rgba(15,23,42,0.16);
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    border-radius: 0 0 18px 18px;
+    position: sticky;
+    top: 0;
+    z-index: 120;
 }
 
 .brand{
@@ -72,7 +114,8 @@ body {
     font-weight: 700;
     font-family: 'Rubik', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
     letter-spacing: -0.2px;
-    color: #333333; /* Un tono gris oscuro más sobrio */
+    color: #f5fbff;
+    text-shadow: 0 6px 14px rgba(0,0,0,0.18);
 }
 
 .nav{
@@ -82,20 +125,22 @@ body {
 }
 
 .navButton{
-    background: transparent;
-    border: none;
-    padding: 10px 14px;
-    border-radius: 10px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.24);
+    padding: 10px 16px;
+    border-radius: 999px;
     cursor: pointer;
-    color: #ffffff;
+    color: #ecf8ff;
     font-weight: 600;
-    transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+    letter-spacing: 0.2px;
+    transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease, color 180ms ease;
 }
 
 .navButton:hover{
     transform: translateY(-3px) scale(1.02);
-    box-shadow: 0 8px 20px rgba(15,23,42,0.06);
-    background: rgba(255,255,255,0.06);
+    box-shadow: 0 18px 30px rgba(15,23,42,0.18);
+    background: rgba(255,255,255,0.18);
+    color: #fff;
 }
 
 .navButton:active{
@@ -103,9 +148,10 @@ body {
 }
 
 .active{
-    background: var(--primary);
+    background: linear-gradient(120deg, var(--primary) 0%, var(--emerald) 100%);
     color: #fff;
-    box-shadow: 0 8px 22px rgba(81,168,128,0.18);
+    box-shadow: 0 14px 30px rgba(0,160,214,0.35);
+    border-color: transparent;
 }
 
 .profileArea{
@@ -143,8 +189,14 @@ body {
 }
 
 .main{
-    padding: 18px;
-    padding-bottom: calc(var(--footer-height) + 24px);
+    padding: 24px;
+    padding-bottom: calc(var(--footer-height) + 32px);
+    position: relative;
+    z-index: 1;
+    background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(230,255,243,0.82));
+    border-radius: 22px;
+    margin: 24px;
+    box-shadow: 0 20px 50px rgba(15,23,42,0.08);
 }
 
 @media (max-width: 760px){
@@ -165,7 +217,7 @@ body {
 }
 .mobileNavInner{
     width: min(420px, 92%);
-    background: #fff;
+    background: linear-gradient(180deg, rgba(255,255,255,0.96) 0%, rgba(240,255,248,0.96) 100%);
     border-radius: 12px;
     padding: 16px;
     box-shadow: 0 18px 40px rgba(15,23,42,0.12);
@@ -181,8 +233,9 @@ body {
     font-weight: 700;
     border-radius: 8px;
     cursor: pointer;
+    color: var(--dark);
 }
-.mobileNavItem:hover{ background: rgba(81,168,128,0.06); }
+.mobileNavItem:hover{ background: rgba(0,160,214,0.1); }
 
 @media (max-width: 420px){
     .headerBar{ padding: 10px 12px; }
@@ -224,18 +277,18 @@ body {
 .hamburgerBtn{
     width: 46px;
     height: 46px;
-    border-radius: 10px;
-    border: none;
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,0.24);
     display: inline-flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    background: linear-gradient(180deg, var(--dark) 0%, rgba(31,41,55,0.9) 100%);
-    box-shadow: 0 8px 20px rgba(15,23,42,0.12);
-    transition: transform 160ms ease, box-shadow 160ms ease;
+    background: linear-gradient(160deg, rgba(0,0,0,0.2), rgba(255,255,255,0.05));
+    box-shadow: 0 12px 30px rgba(15,23,42,0.25);
+    transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
 }
 .hamburgerBtn:focus{ outline: 3px solid rgba(31,41,55,0.12); }
-.hamburgerBtn:hover{ transform: translateY(-3px); }
+.hamburgerBtn:hover{ transform: translateY(-3px); border-color: rgba(255,255,255,0.5); }
 
 .hamburgerLines{ display: inline-block; width: 22px; height: 14px; position: relative; }
 .line{ display: block; height: 2px; background: #fff; margin: 3px 0; border-radius: 2px; transition: transform 220ms ease, opacity 160ms ease; }
@@ -253,7 +306,7 @@ body {
     position: absolute;
     right: 0;
     top: 54px;
-    background: rgba(255,255,255,0.96);
+    background: rgba(255,255,255,0.98);
     border-radius: 10px;
     box-shadow: 0 12px 30px rgba(15,23,42,0.12);
     overflow: hidden;
@@ -264,8 +317,8 @@ body {
 }
 .avatarMenuHeader{
     padding: 10px 12px;
-    background: linear-gradient(180deg, #f7fff9 0%, #f0fff3 100%);
-    border-bottom: 1px solid #eef7ee;
+    background: linear-gradient(180deg, rgba(0,160,214,0.08) 0%, rgba(43,182,115,0.08) 100%);
+    border-bottom: 1px solid rgba(0,160,214,0.14);
 }
 .avatarEmail{
     font-size: 0.9rem;
@@ -288,8 +341,9 @@ body {
     text-align: left;
     cursor: pointer;
     font-weight: 600;
+    color: var(--dark);
 }
-.avatarMenuItem:hover{ background: rgba(81,168,128,0.06); }
+.avatarMenuItem:hover{ background: rgba(0,160,214,0.08); color: var(--primary-dark); }
 
 /* gentle floating animation for the decorative owl */
 @keyframes floaty {
@@ -305,23 +359,28 @@ body {
 
 /* Footer */
 .footer{
-    margin-top: 26px;
-    position: sticky;
+    position: fixed;
+    left: 0;
     bottom: 0;
-    margin-top: auto;
-    padding: 16px 16px 24px; /* Reducí el padding inferior */
-    font-size: 0.85rem; /* Ajusté el tamaño de fuente para hacerlo más ligero */
-    background: rgba(255, 255, 255, 0.95); /* Hice el fondo un poco más claro */
+    width: 100%;
+    z-index: 100;
+    margin-top: 0;
+    padding: 18px clamp(16px,4vw,32px) 26px;
+    font-size: 0.92rem;
+    background: rgba(255, 255, 255, 0.94);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    color: var(--muted);
+    color: var(--dark);
     transition: transform 320ms ease, opacity 320ms ease;
+    border-top: 1px solid rgba(0,160,214,0.12);
+    backdrop-filter: blur(10px);
+    min-height: var(--footer-height);
+    line-height: 1.3;
+    word-break: break-word;
 }
-
-/* footer entrance and sticky behavior */
 .footer{
     animation: footerIn 420ms ease forwards;
 }
@@ -335,7 +394,7 @@ body {
 .footer a:hover{ text-decoration: underline; }
 
 /* hide footer (autohide) */
-.hiddenFooter{ transform: translateY(110%); opacity: 0; pointer-events: none; }
+.hiddenFooter{ display: none !important; }
 
 /* avoid main content being hidden behind fixed footer */
 .main{ padding-bottom: calc(var(--footer-height) + 24px);}
@@ -359,18 +418,20 @@ html, body {
     bottom: 0;
     left: 0;
     width: 100%;
-    height: var(--footer-height);
-    padding: 20px 16px 30px; /* Incrementé el padding inferior */
+    min-height: var(--footer-height);
+    padding: 18px clamp(16px,4vw,32px) 26px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    color: var(--muted);
-    font-size: 0.88rem;
-    background: rgba(255,255,255,0.9);
-    backdrop-filter: blur(6px);
-    border-top: 1px solid rgba(240,243,240,0.6);
+    color: var(--dark);
+    font-size: 0.92rem;
+    background: rgba(255,255,255,0.94);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(0,160,214,0.12);
     transition: transform 320ms ease, opacity 320ms ease;
-    margin-bottom: 12px; /* Agregué margen inferior para separar el footer del borde de la pantalla */
+    margin-bottom: 12px;
+    line-height: 1.3;
+    word-break: break-word;
 }

@@ -55,30 +55,36 @@ export default function TeacherGenerator() {
         onChange={(e) => setCompetencia(e.target.value)}
       />
 
-      <div style={{ marginTop: 10 }}>
-        <select value={tipo} onChange={(e) => setTipo(e.target.value)}>
+      <div className={styles.ctaRow} style={{ marginTop: 18 }}>
+        <select
+          value={tipo}
+          onChange={(e) => setTipo(e.target.value)}
+          style={{ minWidth: 180, flex: "0 0 auto" }}
+        >
           <option value="examen">Examen</option>
           <option value="caso">Caso clínico</option>
           <option value="rúbrica">Rúbrica</option>
         </select>
 
-        <button
-          onClick={generate}
-          disabled={!competencia || loading}
-          className={`${styles.button} ${ui.btnSmooth}`}
-          style={{ marginLeft: 15, display: 'inline-flex', alignItems: 'center', gap: 8 }}
-        >
-          {loading ? "Generando..." : <><FiPlay /> Generar</>}
-        </button>
-        {result && (
+        <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
           <button
-            onClick={downloadPdf}
-            className={`${styles.secondaryButton} ${ui.btnSmooth}`}
-            style={{ marginLeft: 10, display: 'inline-flex', alignItems: 'center', gap: 8 }}
+            onClick={generate}
+            disabled={!competencia || loading}
+            className={`${styles.button} ${ui.btnSmooth}`}
+            style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}
           >
-            <FiDownload /> Descargar PDF
+            {loading ? "Generando..." : <><FiPlay /> Generar</>}
           </button>
-        )}
+          {result && (
+            <button
+              onClick={downloadPdf}
+              className={`${styles.secondaryButton} ${ui.btnSmooth}`}
+              style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}
+            >
+              <FiDownload /> Descargar PDF
+            </button>
+          )}
+        </div>
       </div>
 
       {result && (

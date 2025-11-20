@@ -1,27 +1,58 @@
+
 .container {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(180deg, #f6f8ff 0%, rgba(255,255,255,0.96) 100%);
+  background: radial-gradient(circle at 10% 20%, rgba(0,160,214,0.18), transparent 55%),
+              radial-gradient(circle at 80% 0%, rgba(43,182,115,0.22), transparent 60%),
+              linear-gradient(180deg, #f0fbff 0%, rgba(255,255,255,0.96) 100%);
   padding: 20px;
+}
+
+.card {
+  margin-bottom: 48px; /* Espacio extra debajo del card */
+}
+
+.layout {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  max-width: 980px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .card {
   width: 100%;
   max-width: 420px;
-  background: rgba(255,255,255,0.96);
-  border-radius: 12px;
-  
-  box-shadow: 0 10px 30px rgba(23, 23, 23, 0.08);
-  padding: 24px;
+  background: rgba(255,255,255,0.98);
+  border-radius: 16px;
+  box-shadow: 0 28px 60px rgba(7, 28, 48, 0.16);
+  padding: 28px;
   box-sizing: border-box;
+  border: 1px solid rgba(0,160,214,0.1);
+  position: relative;
+  overflow: hidden;
 }
+.card::after{
+  content:"";
+  position:absolute;
+  inset: -40px auto auto -40px;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,160,214,0.12), transparent 60%);
+  z-index:0;
+}
+.card > *{ position:relative; z-index:1; }
 
 .title {
   margin: 0 0 12px 0;
-  font-size: 1.25rem;
-  color: var(--dark);
+  font-size: 1.4rem;
+  color: #0f233b;
+  font-weight: 700;
 }
 
 .field {
@@ -38,34 +69,49 @@
 .input {
   width: 100%;
   padding: 10px 12px;
-  border-radius: 8px;
-  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  border: 1px solid rgba(0,160,214,0.22);
   font-size: 0.95rem;
   box-sizing: border-box;
-  color: var(--dark);
+  color: #0f233b;
+  background: rgba(255,255,255,0.96);
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+.input:focus{
+  outline: none;
+  border-color: #00a0d6;
+  box-shadow: 0 0 0 3px rgba(0,160,214,0.18);
 }
 
 .buttonPrimary {
-  background: #51A880;
+  background: linear-gradient(120deg, #00a0d6 0%, #2bb673 100%);
   color: white;
-  padding: 10px 14px;
-  border-radius: 8px;
+  padding: 12px 18px;
+  border-radius: 999px;
   border: none;
   cursor: pointer;
   font-weight: 600;
+  box-shadow: 0 18px 30px rgba(0,160,214,0.28);
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+.buttonPrimary:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 24px 38px rgba(0,160,214,0.32);
 }
 
 .toggleBtn {
   margin-top: 12px;
   background: transparent;
   border: none;
-  color: var(--dark);
+  color: #00629d;
   cursor: pointer;
+  font-weight: 600;
 }
 
 .error {
-  color: #b91c1c;
+  color: #e63946;
   margin-bottom: 10px;
+  font-weight: 600;
 }
 
 .row {
@@ -99,10 +145,11 @@
   width: min(420px, 100%);
   height: auto;
   object-fit: contain;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(23,23,23,0.08);
-  background: rgba(255,255,255,0.96);
-  padding: 12px;
+  border-radius: 18px;
+  box-shadow: 0 28px 60px rgba(7,28,48,0.18);
+  background: radial-gradient(circle at 20% 20%, rgba(0,160,214,0.12), transparent 60%), rgba(255,255,255,0.98);
+  padding: 18px;
+  border: 1px solid rgba(0,160,214,0.1);
 }
 
 @media (max-width: 860px) {

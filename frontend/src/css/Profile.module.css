@@ -1,9 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
 :root{
-  --primary:#51A880;
-  --muted:#6b7280;
-  --card: rgba(255,255,255,0.96);
+  --primary:#00a0d6;
+  --primary-dark:#00629d;
+  --emerald:#2bb673;
+  --muted:#4f6071;
+  --card: rgba(255,255,255,0.98);
 }
 
 .profileContainer{
@@ -18,10 +20,23 @@
   width: 100%;
   max-width: min(680px, 96%);
   background: var(--card);
-  border-radius: 14px;
-  padding: 20px;
-  box-shadow: 0 12px 28px rgba(15,23,42,0.06);
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 30px 60px rgba(12,28,48,0.12);
+  border: 1px solid rgba(0,160,214,0.1);
+  position: relative;
+  overflow: hidden;
 }
+.profileCard::after{
+  content:"";
+  position:absolute;
+  inset: auto -60px -60px auto;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,160,214,0.12), transparent 70%);
+}
+.profileCard > *{ position:relative; z-index:1; }
 
 .editForm{
   animation: slideFadeIn 320ms ease forwards;
@@ -34,8 +49,8 @@
 
 .profileTitle{
   margin: 0 0 12px 0;
-  font-size: 1.25rem;
-  color: var(--dark);
+  font-size: 1.35rem;
+  color: var(--primary-dark);
   font-weight: 700;
 }
 
@@ -59,9 +74,16 @@
 .input{
   padding: 10px 12px;
   border-radius: 10px;
-  border: 1px solid #e6eef0;
+  border: 1px solid rgba(0,160,214,0.18);
   font-size: 0.96rem;
   color: var(--dark);
+  background: rgba(255,255,255,0.95);
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+.input:focus{
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(0,160,214,0.18);
 }
 
 .fullWidth{ grid-column: 1 / -1; }
@@ -73,22 +95,32 @@
 }
 
 .saveBtn{
-  background: var(--primary);
+  background: linear-gradient(120deg, var(--primary) 0%, var(--emerald) 100%);
   color: white;
-  padding: 10px 14px;
-  border-radius: 10px;
+  padding: 12px 20px;
+  border-radius: 999px;
   border: none;
   cursor: pointer;
   font-weight: 700;
+  box-shadow: 0 20px 34px rgba(0,160,214,0.25);
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+.saveBtn:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 26px 38px rgba(0,160,214,0.3);
 }
 
 .cancelBtn{
   background: transparent;
-  border: 1px solid #e6eef0;
-  color: var(--dark);
+  border: 1px solid rgba(0,160,214,0.24);
+  color: var(--primary-dark);
   padding: 10px 12px;
   border-radius: 10px;
   cursor: pointer;
+  transition: all 160ms ease;
+}
+.cancelBtn:hover{
+  background: rgba(0,160,214,0.08);
 }
 
 .message{

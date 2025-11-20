@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from "../css/AuthForm.module.css";
 import ui from '../css/UI.module.css';
 import { FiUser } from 'react-icons/fi';
@@ -53,6 +53,23 @@ const AuthForm = ({ onLoginSuccess }) => {
       setErrorMessage('Error al conectar con el servidor');
     }
   };
+
+  const [footerHidden, setFooterHidden] = useState(false);
+  useEffect(() => {
+    const onScroll = () => {
+      const scrollY = window.scrollY;
+      const windowHeight = window.innerHeight;
+      const docHeight = document.documentElement.scrollHeight;
+      if (scrollY + windowHeight >= docHeight - 80) {
+        setFooterHidden(false);
+      } else {
+        setFooterHidden(true);
+      }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   return (
     <div className={styles.container}>
