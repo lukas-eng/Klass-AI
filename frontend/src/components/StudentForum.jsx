@@ -9,7 +9,7 @@ const StudentForum = ({ userEmail }) => {
   const [replyContent, setReplyContent] = useState({});
 
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/forum/posts')
+    fetch('https://klass-ai.onrender.com/forum/posts')
       .then(res => res.json())
       .then(data => setPosts(data));
   }, []);
@@ -22,13 +22,13 @@ const StudentForum = ({ userEmail }) => {
       content: newPost,
       timestamp: new Date().toISOString()
     };
-    await fetch('http://127.0.0.1:8000/forum/post', {
+    await fetch('https://klass-ai.onrender.com/forum/post', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(postData)
     });
     setNewPost('');
-    fetch('http://127.0.0.1:8000/forum/posts')
+    fetch('https://klass-ai.onrender.com/forum/posts')
       .then(res => res.json())
       .then(data => setPosts(data));
   };
@@ -41,13 +41,13 @@ const StudentForum = ({ userEmail }) => {
       content: replyContent[postId],
       timestamp: new Date().toISOString()
     };
-    await fetch('http://127.0.0.1:8000/forum/reply', {
+    await fetch('https://klass-ai.onrender.com/forum/reply', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(replyData)
     });
     setReplyContent({ ...replyContent, [postId]: '' });
-    fetch('http://127.0.0.1:8000/forum/posts')
+    fetch('https://klass-ai.onrender.com/forum/posts')
       .then(res => res.json())
       .then(data => setPosts(data));
   };
@@ -106,10 +106,10 @@ const StudentForum = ({ userEmail }) => {
                   <button className={`${styles.button} ${ui.btnSmooth}`} onClick={() => handleReply(idx)}>Responder</button>
                   {post.email === userEmail && (
                     <button className={`${styles.mutedBtn} ${ui.btnSmooth}`} style={{ color: 'red' }} onClick={async () => {
-                      await fetch(`http://127.0.0.1:8000/forum/post/${idx}?email=${userEmail}`, {
+                      await fetch(`https://klass-ai.onrender.com/forum/post/${idx}?email=${userEmail}`, {
                         method: 'DELETE'
                       });
-                      fetch('http://127.0.0.1:8000/forum/posts')
+                      fetch('https://klass-ai.onrender.com/forum/posts')
                         .then(res => res.json())
                         .then(data => setPosts(data));
                     }}>Eliminar</button>
@@ -125,3 +125,4 @@ const StudentForum = ({ userEmail }) => {
 };
 
 export default StudentForum;
+
