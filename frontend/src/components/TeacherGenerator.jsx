@@ -15,7 +15,7 @@ export default function TeacherGenerator() {
     setLoading(true);
 
     try {
-      const res = await axios.post("http://localhost:8000/teacher", {
+      const res = await axios.post("https://klass-ai.onrender.com/teacher", {
         competencia,
         tipo,
       });
@@ -90,3 +90,4 @@ export default function TeacherGenerator() {
     </div>
   );
 }
+
